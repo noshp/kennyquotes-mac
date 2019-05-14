@@ -13,7 +13,7 @@ class Parser:
 
 		self.output_file = output_file
 
-		self.keywords = ['FUCK', 'SHIT', 'ZAPIER', 'CTRL F', 'EXERCISE', 'DRINKING', 'DRINK', 'DRUNK', 'DRINKS', 'CLIENT', 'CLIENTS', 'TASK', 'OVERWATCH', 'KEN', 'CALENDAR', 'SALESFORCE', 'GOOGLE', 'GOOGLESHEET','GOOGLESHEETS','STRATEGY','STRATEGIC','GOAL','GOALS','MEETING','MEETINGS','HER','SHE','TOILET']
+		self.keywords = ['FUCK', 'SHIT', 'ZAPIER', 'CTRL F', 'EXERCISE', 'DRINKING', 'DRINK', 'DRUNK', 'DRINKS', 'CLIENT', 'CLIENTS', 'TASK', 'OVERWATCH', 'KEN', 'CALENDAR', 'SALESFORCE', 'GOOGLE', 'GOOGLESHEET','GOOGLESHEETS','STRATEGY','STRATEGIC','GOAL','GOALS','MEETING','MEETINGS','TOILET', 'ASS', 'SONAL', 'GRANTBOOK', 	]
 
 
 
@@ -44,7 +44,8 @@ class Parser:
 				object['user'].upper().strip() == self.user_id.upper().strip() and 
 				len(object['text']) >= 10 and
 				any( x for x in self.keywords if x in object['text'].upper().split(" ")) and
-				object['text'] != '<@U9APJ3XKN> has joined the channel'
+				object['text'] != '<@U9APJ3XKN> has joined the channel' and
+				"\n" not in object['text']
 				
 				): #and len(object['reactions']) >= 1:
 
@@ -79,7 +80,7 @@ class Parser:
 
 
 
-bot = Parser('Kenny Li', 'kenny_quotes.csv')
+bot = Parser('Kenny Li', './out/kenny_quotes.csv')
 
 print( bot.start() )
 
