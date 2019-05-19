@@ -5,16 +5,22 @@ import random, os
 from gtts import gTTS 
 
 
-class AudioFileConverter:
+class AudioFileMaker:
 
 	def __init__(self, input_filepath, number_of_quotes):
-		self.output_filepath = "./static/audio/kenny_quotes.mp3"
+		try:
+			os.remove( "./static/audio/quotes/" + os.listdir("./static/audio/quotes")[0] )
+		except:
+			pass
+
+		self.output_filepath = "./static/audio/quotes/kenny_quotes"+str(random.randint(0,999))+".mp3"
 
 		self.input_filepath = input_filepath
 		self.number_of_quotes = int(number_of_quotes)
 
 		self.quotes = self.select_from_file()
 		self.quotes_mp3 = self.quote_to_audio()
+
 
 
 
@@ -36,12 +42,14 @@ class AudioFileConverter:
 								lang = 'en',
 								slow = False
 								).save(self.output_filepath)
+			print(self.quotes)
 
 			
 
+	def return_filepath(self):
+		return self.output_filepath
 
 
 
-
-
-bot = AudioFileConverter('./static/kenny_quotes.csv', 3)
+if __name__ == "__main__":
+	AudioFileMaker('./static/kenny_quotes.csv', 1)

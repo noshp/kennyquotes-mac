@@ -5,15 +5,17 @@ import json, os
 
 class Parser:
 	def __init__(self, username, output_file):
-		self.data_dir = "./static/"
-		self.user_data_file = json.load( open(self.data_dir+"users.json") )
+		self.static_dir = "./static"
+		self.data_dir = self.static_dir+"/data/"
+
+		self.user_data_file = json.load( open(self.static_dir+"/users.json") )
 
 		self.user_id = self.get_user_id(username)
 		print(self.user_id)
 
 		self.output_file = output_file
 
-		self.keywords = ['FUCK', 'SHIT', 'ZAPIER', 'CTRL F', 'EXERCISE', 'DRINKING', 'DRINK', 'DRUNK', 'DRINKS', 'CLIENT', 'CLIENTS', 'TASK', 'OVERWATCH', 'KEN', 'CALENDAR', 'SALESFORCE', 'GOOGLE', 'GOOGLESHEET','GOOGLESHEETS','STRATEGY','STRATEGIC','GOAL','GOALS','MEETING','MEETINGS','TOILET', 'ASS', 'SONAL', 'GRANTBOOK', 	]
+		self.keywords = ['FUCK', 'SHIT', 'ZAPIER', 'CTRL F', 'EXERCISE', 'DRINKING', 'DRINK', 'DRUNK', 'DRINKS', 'CLIENT', 'CLIENTS', 'TASK', 'OVERWATCH', 'KEN', 'CALENDAR', 'SALESFORCE', 'GOOGLE', 'GOOGLESHEET','GOOGLESHEETS','STRATEGY','STRATEGIC','GOAL','GOALS','MEETING','MEETINGS','TOILET', 'ASS', 'SONAL', 'GRANTBOOK']
 
 
 
@@ -79,9 +81,9 @@ class Parser:
 
 
 
+if __name__ == "__main__":
+	bot = Parser('Kenny Li', './static/kenny_quotes.csv')
 
-bot = Parser('Kenny Li', './out/kenny_quotes.csv')
-
-print( bot.start() )
+	print( bot.start() )
 
 

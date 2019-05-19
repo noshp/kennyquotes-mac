@@ -3,15 +3,15 @@
 	<head>
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	</head>
-	
+
 
 	<body>
 		<!-- This i Frame plays 250 MS of silence, which makes Chrome think audio has been played; this allows for the autoplay tag below to run uninhibited -->
-		<iframe src="{{ url_for('static',filename='audio/silence.mp3') }}" allow="autoplay" id="audio" style="display:none"></iframe>
+		<iframe src="{{ url_for('static',filename='audio/silence.mp3') }}" allow="autoplay" id="silence" style="display:none"></iframe>
 
 
-		<audio autoplay loop>
-		  <source src= "{{ url_for('static',filename='audio/kenny_quotes.mp3') }}" type="audio/mpeg">
+		<audio id = "audio" autoplay loop>
+		  <source src= "{{ audio }}" type="audio/mpeg">
 		</audio>
 
 		<img id = "kenny_pic" src="{{ image }}"></img>
