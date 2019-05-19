@@ -5,7 +5,7 @@ import json, os
 
 class Parser:
 	def __init__(self, username, output_file):
-		self.data_dir = "./data/"
+		self.data_dir = "./static/"
 		self.user_data_file = json.load( open(self.data_dir+"users.json") )
 
 		self.user_id = self.get_user_id(username)
